@@ -1,6 +1,8 @@
+const BASE_URL = "localhost:19006";
+
 export async function signUp({ email, password }) {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/api/v1/users`, {
+    const res = await fetch(`${BASE_URL}/api/v1/users`, {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -25,7 +27,7 @@ export async function signUp({ email, password }) {
 
 export async function signIn({ email, password }) {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/api/v1/users/sessions`, {
+    const res = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -49,7 +51,7 @@ export async function signIn({ email, password }) {
 
 export async function getUser() {
   try {
-    const resp = await fetch(`${process.env.BASE_URL}/api/v1/users/me`, {
+    const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -68,7 +70,7 @@ export async function getUser() {
 }
 
 export async function logout() {
-  const resp = await fetch(`${process.env.BASE_URL}/api/v1/users/sessions`, {
+  const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",

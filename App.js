@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { NativeRouter } from "react-router-native";
+import { NativeRouter, Route, Routes } from "react-router-native";
+import AuthForm from "./Components/Auth/AuthForm.js";
 import { UserProvider } from "./context/UserContext.js";
 
 export default function App() {
@@ -8,8 +9,12 @@ export default function App() {
     <UserProvider>
       <NativeRouter>
         <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
+          <Text>Hello</Text>
+          <AuthForm />
           <StatusBar style="auto" />
+          <Routes>
+            <Route path="/" element={<AuthForm />} />
+          </Routes>
         </View>
       </NativeRouter>
     </UserProvider>
