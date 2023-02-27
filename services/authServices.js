@@ -51,7 +51,7 @@ export async function signIn({ email, password }) {
 
 export async function getUser() {
   try {
-    const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
+    const resp = await fetch(`http://${BASE_URL}/api/v1/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",

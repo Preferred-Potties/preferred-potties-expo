@@ -10,7 +10,7 @@ export default function App() {
       <NativeRouter>
         <View style={styles.container}>
           <Text>Hello</Text>
-          <AuthForm />
+
           <StatusBar style="auto" />
           <Routes>
             <Route path="/" element={<AuthForm />} />
