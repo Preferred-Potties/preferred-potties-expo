@@ -1,13 +1,13 @@
-import { View, Text, Alert, Button, TextInput } from "react-native";
+import { View, Button, TextInput } from "react-native";
 import React, { useState } from "react";
 import { useCurrentUser } from "../../context/UserContext.js";
-import { Redirect, useNavigate, useParams } from "react-router-native";
+import { useNavigate, useParams } from "react-router-native";
 import { authUser } from "../../services/authServices.js";
 
 export default function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { type } = useParams();
+  const [ type, setType ] = useState('');
   const { user, setUser } = useCurrentUser();
   const navigate = useNavigate();
 
@@ -28,6 +28,15 @@ export default function AuthForm() {
 
   return (
     <View>
+  <View>
+      <Link to='/sign-up' onPress={setType('sign-up')}>
+            <Text>Sign-Up</Text>
+          </Link>
+          <Link to='/sign-in' onPress={setType('sign-in')}>
+            <Text>Sign-In</Text>
+          </Link>
+      </View>
+    <View>
       <TextInput
         placeholder="Email"
         value={email}
@@ -40,6 +49,7 @@ export default function AuthForm() {
         placeholder="Password"
       />
       <Button onPress={submitAuth} title="Press Me" />
+    </View>
     </View>
   );
 }
