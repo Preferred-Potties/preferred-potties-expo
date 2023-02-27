@@ -83,3 +83,16 @@ export async function logout() {
     throw new Error("Unable to logout");
   }
 }
+
+export async function authUser(email, password, type) {
+  let response;
+  if (type === "sign-up") {
+    response = await signUp({ email, password });
+  } else {
+    response = await signIn({ email, password });
+  }
+  if (response.error) {
+    throw response.error;
+  }
+  return response.user;
+}

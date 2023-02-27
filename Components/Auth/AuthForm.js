@@ -2,6 +2,7 @@ import { View, Text, Alert, Button, TextInput } from "react-native";
 import React, { useState } from "react";
 import { useCurrentUser } from "../../context/UserContext.js";
 import { Redirect, useNavigate, useParams } from "react-router-native";
+import { authUser } from "../../services/authServices.js";
 
 export default function AuthForm() {
   const [email, setEmail] = useState("");
@@ -17,8 +18,9 @@ export default function AuthForm() {
   const submitAuth = async (e) => {
     e.preventDefault();
     try {
-      const newUser = await setUser(email, password, type);
-      console.log("newUser", newUser);
+      const newUser = await authUser(email, password, type);
+      setUser(newUser);
+      console.log(user, "user");
     } catch (e) {
       console.error(e);
     }
