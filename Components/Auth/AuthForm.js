@@ -25,12 +25,18 @@ export default function AuthForm() {
 
   return (
     <View>
-      <TextInput placeholder="Email" />
-      <TextInput secureTextEntry={true} placeholder="Password" />
-      <Button
-        onPress={() => Alert.alert("You pressed the button!")}
-        title="Press Me"
+      <TextInput
+        onChangeText={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+        value={email}
       />
+      <TextInput
+        secureTextEntry={true}
+        onChangeText={(e) => setPassword(e.target.value)}
+        value={password}
+        placeholder="Password"
+      />
+      <Button onPress={submitAuth} title="Press Me" />
     </View>
   );
 }
