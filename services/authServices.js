@@ -1,7 +1,8 @@
 const BASE_URL = "http://localhost:7890";
 
-export async function signUp({ email, password }) {
+export async function signUp( email, password ) {
   // try {
+    console.log(email, password, 'IN SERVICES');
     const res = await fetch(`${BASE_URL}/api/v1/users`, {
       method: "POST",
       mode: "cors",
@@ -15,7 +16,12 @@ export async function signUp({ email, password }) {
         password,
       }),
     });
-    return res.json();
+    const data = res.json();
+    if (!res.ok) {
+      throw new Error(data.message);
+    } else {
+      return data;
+    }
     // const resp = await res.json();
   //   if (resp.ok) {
   //      await signIn({ email, password });
@@ -28,7 +34,7 @@ export async function signUp({ email, password }) {
   // }
 }
 
-export async function signIn({ email, password }) {
+export async function signIn( email, password ) {
   try {
     const res = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
       method: "POST",
