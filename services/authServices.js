@@ -1,34 +1,38 @@
-const BASE_URL = "localhost:19006";
+const BASE_URL = "http://localhost:7890";
 
 export async function signUp({ email, password }) {
-  try {
-    const res = await fetch(`http://${BASE_URL}/api/v1/users`, {
+  // try {
+    const res = await fetch(`${BASE_URL}/api/v1/users`, {
       method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      mode: "cors",
+      credentials: "include",
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
       },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     });
-    const resp = await res.json();
-    if (res.ok) {
-      return await signIn({ email, password });
-    } else {
-      alert("This email already has an account, try signing in");
-      throw new Error(resp.message);
-    }
-  } catch (e) {
-    return null;
-  }
+    return res.json();
+    // const resp = await res.json();
+  //   if (resp.ok) {
+  //      await signIn({ email, password });
+  //   } else {
+  //     alert("This email already has an account, try signing in");
+  //     throw new Error(resp.message);
+  //   }
+  // } catch (e) {
+  //   return null;
+  // }
 }
 
 export async function signIn({ email, password }) {
   try {
-    const res = await fetch(`http://${BASE_URL}/api/v1/users/sessions`, {
+    const res = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
       method: "POST",
+      credentials: "include",
       body: JSON.stringify({
         email,
         password,
@@ -51,7 +55,7 @@ export async function signIn({ email, password }) {
 
 export async function getUser() {
   try {
-    const resp = await fetch(`http://${BASE_URL}/api/v1/users/me`, {
+    const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -70,7 +74,7 @@ export async function getUser() {
 }
 
 export async function logout() {
-  const resp = await fetch(`http://${BASE_URL}/api/v1/users/sessions`, {
+  const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",

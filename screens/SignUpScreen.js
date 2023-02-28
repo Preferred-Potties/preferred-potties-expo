@@ -1,10 +1,12 @@
 import { View, Button, TextInput } from "react-native";
 import React, { useState } from "react";
 import { signUp } from "../services/authServices.js";
+import { useCurrentUser } from "../context/UserContext.js";
 
 export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {setUser} = useCurrentUser();
 
   const submitAuth = async (e) => {
     e.preventDefault();
@@ -19,13 +21,13 @@ export default function SignUpScreen() {
   return (
     <View>
       <TextInput
-        onChangeText={(e) => setEmail(e.target.value)}
+        onChangeText={(text) => setEmail(text)}
         placeholder="Email"
         value={email}
       />
       <TextInput
         secureTextEntry={true}
-        onChangeText={(e) => setPassword(e.target.value)}
+        onChangeText={(text) => setPassword(text)}
         value={password}
         placeholder="Password"
       />
