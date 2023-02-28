@@ -1,23 +1,15 @@
-import { View, Text, Alert, Button, TextInput } from "react-native";
+import { View, Button, TextInput } from "react-native";
 import React, { useState } from "react";
-import { useCurrentUser } from "../../context/UserContext.js";
-import { Redirect, useParams } from "react-router-native";
 import { signIn } from "../services/authServices.js";
 
-export default function AuthForm() {
+export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { type } = useParams();
-  const { user, useUser } = useCurrentUser();
-
-  if (user) {
-    return <Redirect to="/api/v1/loos" />;
-  }
 
   const submitAuth = async (e) => {
     e.preventDefault();
     try {
-      const newUser = await authUser(email, password, type);
+      const newUser = await signIn(email, password);
       setUser(newUser);
     } catch (e) {
       console.error(e);
@@ -37,7 +29,7 @@ export default function AuthForm() {
         value={password}
         placeholder="Password"
       />
-      <Button onPress={signIn} title="Press Me" />
+      <Button onPress={submitAuth} title="Press Me" />
     </View>
   );
 }
