@@ -1,4 +1,4 @@
-import { View, Button, TextInput } from "react-native";
+import { View, Button, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { signIn } from "../services/authServices.js";
 
@@ -21,7 +21,7 @@ export default function LoginScreen() {
       <TextInput
         onChangeText={(e) => setEmail(e.target.value)}
         placeholder="Email"
-        value={email} 
+        value={email}
         style={styles.input}
       />
       <TextInput
