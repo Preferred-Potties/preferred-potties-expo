@@ -6,6 +6,9 @@ import HomeScreen from "./screens/HomeScreen.js";
 import LoginInScreen from "./screens/LoginScreen.js";
 import { useCurrentUser, UserProvider } from "./context/UserContext.js";
 import { useState } from "react";
+import { enableLatestRenderer } from "react-native-maps";
+
+enableLatestRenderer();
 
 const Stack = createNativeStackNavigator();
 

@@ -31,7 +31,7 @@ export default function LoginScreen() {
         placeholder="Password"
         style={styles.input}
       />
-      <Button onPress={submitAuth} title="Press Me" />
+      <Button onPress={submitAuth} title="Sign In" />
     </View>
   );
 

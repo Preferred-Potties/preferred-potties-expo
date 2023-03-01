@@ -6,7 +6,7 @@ import { useCurrentUser } from "../context/UserContext.js";
 export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setUser} = useCurrentUser();
+  const { setUser } = useCurrentUser();
 
   const submitAuth = async (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export default function SignUpScreen() {
         value={password}
         placeholder="Password"
       />
-      <Button onPress={submitAuth} title="Press Me" />
+      <Button onPress={submitAuth} title="Sign Up" />
     </View>
   );
 }
