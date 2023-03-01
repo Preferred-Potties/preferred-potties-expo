@@ -24,7 +24,7 @@ function Auth() {
 function Authenticated() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home Screen" component={HomeScreen} />
+      <Stack.Screen name="Welcome to Loocater!" component={HomeScreen} />
     </Stack.Navigator>
   );
 }

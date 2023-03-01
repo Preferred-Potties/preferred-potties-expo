@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import { useCurrentUser } from "../context/UserContext.js";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 export default function HomeScreen() {
