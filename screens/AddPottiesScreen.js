@@ -1,10 +1,16 @@
-import { View, Text } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import React from "react";
-import { TextInput } from "react-native-web";
 
 export default function AddPottiesScreen() {
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        height: 250,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Add a Potty</Text>
       <Picker>
         <Picker.Item label="1" value="1" />

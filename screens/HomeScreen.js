@@ -1,6 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+
+const addPotty = ({ navigation }) => {
+  navigation.navigate("Add a Potty");
+};
 
 export default function HomeScreen() {
   return (
@@ -16,6 +20,7 @@ export default function HomeScreen() {
           longitudeDelta: 0.0421,
         }}
       />
+      <Button title="Add Potty" onPress={addPotty}></Button>
     </View>
   );
 }

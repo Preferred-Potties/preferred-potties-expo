@@ -1,12 +1,12 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignUpScreen from "./screens/SignUpScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import LoginInScreen from "./screens/LoginScreen.js";
 import { useCurrentUser, UserProvider } from "./context/UserContext.js";
-import { useState } from "react";
 import { enableLatestRenderer } from "react-native-maps";
+import AddPottiesScreen from "./screens/AddPottiesScreen.js";
 
 enableLatestRenderer();
 
@@ -25,6 +25,7 @@ function Authenticated() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Welcome to Loocater!" component={HomeScreen} />
+      <Stack.Screen name="Add a Potty!" component={AddPottiesScreen} />
     </Stack.Navigator>
   );
 }
@@ -41,11 +42,11 @@ function Navigate() {
 
 export default function App() {
   return (
-    <>
+    <View>
       <UserProvider>
         <Navigate />
       </UserProvider>
-    </>
+    </View>
   );
 }
 

@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     async function fetchUser() {
       const data = await getUser();
+      console.log("data", data);
       setUser(data);
       setLoading(false);
     }
