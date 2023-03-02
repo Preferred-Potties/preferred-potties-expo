@@ -3,10 +3,10 @@ import React from "react";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 const addPotty = ({ navigation }) => {
-  navigation.navigate("Add a Potty");
+  navigation.navigate("Add a Potty!");
 };
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>Welcome Looser!</Text>
@@ -20,7 +20,10 @@ export default function HomeScreen() {
           longitudeDelta: 0.0421,
         }}
       />
-      <Button title="Add Potty" onPress={addPotty}></Button>
+      <Button
+        title="Add a Potty!"
+        onPress={() => navigation.navigate("Add a Potty!")}
+      ></Button>
     </View>
   );
 }

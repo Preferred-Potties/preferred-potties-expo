@@ -21,13 +21,13 @@ export default function LoginScreen() {
   return (
     <View>
       <TextInput
-        onChangeText={(e) => setEmail(e.target.value)}
+        onChangeText={(text) => setEmail(text)}
         placeholder="Email"
         value={email}
       />
       <TextInput
         secureTextEntry={true}
-        onChangeText={(e) => setPassword(e.target.value)}
+        onChangeText={(text) => setPassword(text)}
         value={password}
         placeholder="Password"
       />

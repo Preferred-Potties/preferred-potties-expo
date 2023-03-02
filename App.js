@@ -32,21 +32,21 @@ function Authenticated() {
 
 function Navigate() {
   const { user } = useCurrentUser();
+  console.log("USER", user);
   return (
     <NavigationContainer>
-      {!user && <Auth />}
-      {user && <Authenticated />}
+      {user ? <Authenticated /> : <Auth />}
     </NavigationContainer>
   );
 }
 
 export default function App() {
   return (
-    <View>
+    <>
       <UserProvider>
         <Navigate />
       </UserProvider>
-    </View>
+    </>
   );
 }
 
