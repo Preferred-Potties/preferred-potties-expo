@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
+import { Button } from "react-native-web";
 
 export default function AddPottiesScreen() {
   const [cleanliness, setCleanliness] = useState("");
@@ -54,23 +55,26 @@ export default function AddPottiesScreen() {
         data={accessibilityData}
       />
       <TextInput
+        style={styles.input}
         value={amenities}
-        label="Amenities"
+        placeholder="Amenities"
         maxLength="100"
         onChangeText={(text) => setAmenities(text)}
       />
       <TextInput
+        style={styles.input}
         value={comment}
-        label="Comments"
+        placeholder="Comments"
         maxLength="250"
         onChangeText={(text) => setComment(text)}
       />
+      <Button title="Submit" onPress={(e) => {}} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  picker: { height: 100, width: 200, backgroundColor: "black" },
+  input: { height: 100, width: 200, borderColor: "black", borderWidth: 1 },
   container: {
     position: "absolute",
     top: 0,
