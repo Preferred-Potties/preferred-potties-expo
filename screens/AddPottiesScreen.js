@@ -1,7 +1,7 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import React, { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
-import { Button } from "react-native-web";
+import { postReview } from "../services/loosServices.js";
 
 export default function AddPottiesScreen() {
   const [cleanliness, setCleanliness] = useState("");
@@ -68,7 +68,7 @@ export default function AddPottiesScreen() {
         maxLength="250"
         onChangeText={(text) => setComment(text)}
       />
-      <Button title="Submit" onPress={(e) => {}} />
+      <Button title="Submit" onPress={postReview} />
     </View>
   );
 }
@@ -85,37 +85,3 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
 });
-
-/* <Picker style={styles.picker}>
-        <Picker.Item label="1" value="1" />
-        <Picker.Item label="2" value="2" />
-        <Picker.Item label="3" value="3" />
-        <Picker.Item label="4" value="4" />
-        <Picker.Item label="5" value="5" />
-      </Picker>
-      <Picker>
-        <Picker.Item label="1" value="1" />
-        <Picker.Item label="2" value="2" />
-        <Picker.Item label="3" value="3" />
-        <Picker.Item label="4" value="4" />
-        <Picker.Item label="5" value="5" />
-      </Picker>
-      <Picker>
-        <Picker.Item label="1" value="1" />
-        <Picker.Item label="2" value="2" />
-        <Picker.Item label="3" value="3" />
-        <Picker.Item label="4" value="4" />
-        <Picker.Item label="5" value="5" />
-      </Picker>
-      <Picker>
-        <Picker.Item label="Yes" value="true" />
-        <Picker.Item label="No" value="false" />
-      </Picker>
-      <Picker>
-        <Picker.Item label="Yes" value="true" />
-        <Picker.Item label="No" value="false" />
-      </Picker>
-      <Picker>
-        <Picker.Item label="Yes" value="true" />
-        <Picker.Item label="No" value="false" />
-      </Picker> */

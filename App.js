@@ -7,8 +7,9 @@ import LoginInScreen from "./screens/LoginScreen.js";
 import { useCurrentUser, UserProvider } from "./context/UserContext.js";
 import { enableLatestRenderer } from "react-native-maps";
 import AddPottiesScreen from "./screens/AddPottiesScreen.js";
+import { LoosProvider } from "./context/LoosContext.js";
 
-enableLatestRenderer();
+// enableLatestRenderer();
 
 const Stack = createNativeStackNavigator();
 
@@ -32,10 +33,10 @@ function Authenticated() {
 
 function Navigate() {
   const { user } = useCurrentUser();
-  console.log("USER", user);
+
   return (
     <NavigationContainer>
-      {user ? <Authenticated /> : <Auth />}
+      {!user ? <Auth /> : <Authenticated />}
     </NavigationContainer>
   );
 }
@@ -44,7 +45,9 @@ export default function App() {
   return (
     <>
       <UserProvider>
-        <Navigate />
+        <LoosProvider>
+          <Navigate />
+        </LoosProvider>
       </UserProvider>
     </>
   );
