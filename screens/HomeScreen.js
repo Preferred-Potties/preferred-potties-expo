@@ -9,7 +9,6 @@ const addPotty = ({ navigation }) => {
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Welcome Looser!</Text>
       <MapView
         style={styles.mapStyle}
         provider={PROVIDER_GOOGLE}
