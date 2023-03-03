@@ -4,11 +4,21 @@ import { SelectList } from "react-native-dropdown-select-list";
 import { postReview } from "../services/loosServices.js";
 
 export default function AddPottiesScreen() {
+  const [location, setLocation] = useState("");
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
   const [cleanliness, setCleanliness] = useState("");
   const [safety, setSafety] = useState("");
   const [accessibility, setAccessibility] = useState("");
   const [amenities, setAmenities] = useState("");
   const [comment, setComment] = useState("");
+  const ratingData = [
+    { key: "1", value: "1" },
+    { key: "2", value: "2" },
+    { key: "3", value: "3" },
+    { key: "4", value: "4" },
+    { key: "5", value: "5" },
+  ];
   const cleanlinessData = [
     { key: "1", value: "1" },
     { key: "2", value: "2" },
@@ -33,6 +43,20 @@ export default function AddPottiesScreen() {
 
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        value={description}
+        placeholder="Description"
+        maxLength="150"
+        onChangeText={(text) => setDescription(text)}
+      />
+      <Text>Rating</Text>
+      <SelectList
+        value={rating}
+        title="Rating"
+        setSelected={(val) => setRating(val)}
+        data={ratingData}
+      />
       <Text>Cleanliness</Text>
       <SelectList
         value={cleanliness}
