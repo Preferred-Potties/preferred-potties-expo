@@ -23,6 +23,10 @@ export default function HomeScreen({ navigation }) {
         title="Add a Potty!"
         onPress={() => navigation.navigate("Add a Potty!")}
       ></Button>
+      <Button
+        title="Go to TestScreen"
+        onPress={() => navigation.navigate("TestScreen")}
+      ></Button>
     </View>
   );
 }

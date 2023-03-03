@@ -8,6 +8,7 @@ import { useCurrentUser, UserProvider } from "./context/UserContext.js";
 import { enableLatestRenderer } from "react-native-maps";
 import AddPottiesScreen from "./screens/AddPottiesScreen.js";
 import { LoosProvider } from "./context/LoosContext.js";
+import TestScreen from "./screens/TestScreen.js";
 
 // enableLatestRenderer();
 
@@ -27,6 +28,7 @@ function Authenticated() {
     <Stack.Navigator>
       <Stack.Screen name="Welcome to Loocater!" component={HomeScreen} />
       <Stack.Screen name="Add a Potty!" component={AddPottiesScreen} />
+      <Stack.Screen name="TestScreen" component={TestScreen} />
     </Stack.Navigator>
   );
 }
