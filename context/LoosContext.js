@@ -6,6 +6,7 @@ const LoosContext = createContext();
 const LoosProvider = ({ children }) => {
   const [loos, setLoos] = useState([]);
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     const fetchLoos = async () => {
       try {
@@ -30,7 +31,14 @@ const LoosProvider = ({ children }) => {
     fetchReviews();
   }, []);
   return (
-    <LoosContext.Provider value={{ loos, setLoos, reviews, setReviews }}>
+    <LoosContext.Provider
+      value={{
+        loos,
+        setLoos,
+        reviews,
+        setReviews,
+      }}
+    >
       {children}
     </LoosContext.Provider>
   );

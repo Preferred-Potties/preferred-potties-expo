@@ -5,10 +5,10 @@ import SignUpScreen from "./screens/SignUpScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import LoginInScreen from "./screens/LoginScreen.js";
 import { useCurrentUser, UserProvider } from "./context/UserContext.js";
-import { enableLatestRenderer } from "react-native-maps";
 import AddPottiesScreen from "./screens/AddPottiesScreen.js";
 import { LoosProvider } from "./context/LoosContext.js";
 import TestScreen from "./screens/TestScreen.js";
+// import { enableLatestRenderer } from "react-native-maps";
 
 // enableLatestRenderer();
 

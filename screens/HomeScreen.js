@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 const addPotty = ({ navigation }) => {
   navigation.navigate("Add a Potty!");
@@ -11,22 +11,30 @@ export default function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <MapView
         style={styles.mapStyle}
-        provider={PROVIDER_GOOGLE}
         initialRegion={{
           latitude: 45.5173,
           longitude: -122.6836,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      >
+        <Marker
+          coordinate={{
+            latitude: 45.5173,
+            longitude: -122.6836,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      </MapView>
       <Button
         title="Add a Potty!"
         onPress={() => navigation.navigate("Add a Potty!")}
-      ></Button>
+      />
       <Button
         title="Go to TestScreen"
         onPress={() => navigation.navigate("TestScreen")}
-      ></Button>
+      />
     </View>
   );
 }
@@ -53,3 +61,12 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 });
+
+// style={styles.mapStyle}
+// provider={PROVIDER_GOOGLE}
+// initialRegion={{
+//   latitude: 45.5173,
+//   longitude: -122.6836,
+//   latitudeDelta: 0.0922,
+//   longitudeDelta: 0.0421,
+// }}

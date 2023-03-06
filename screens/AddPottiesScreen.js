@@ -1,10 +1,13 @@
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
 import { postReview } from "../services/loosServices.js";
+import * as Location from "expo-location";
+import { Marker } from "react-native-maps";
 
 export default function AddPottiesScreen() {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
   const [cleanliness, setCleanliness] = useState("");
@@ -41,8 +44,31 @@ export default function AddPottiesScreen() {
     { key: "5", value: "5" },
   ];
 
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
   return (
     <View style={styles.container}>
+      <Text style={styles.paragraph} value={location}>
+        {text}
+      </Text>
       <TextInput
         style={styles.input}
         value={description}
@@ -98,7 +124,7 @@ export default function AddPottiesScreen() {
 }
 
 const styles = StyleSheet.create({
-  input: { height: 100, width: 200, borderColor: "black", borderWidth: 1 },
+  input: { height: 50, width: 200, borderColor: "black", borderWidth: 1 },
   container: {
     position: "absolute",
     top: 0,
