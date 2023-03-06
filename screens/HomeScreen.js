@@ -17,6 +17,7 @@ export default function HomeScreen({ navigation }) {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        provider={PROVIDER_GOOGLE}
       >
         <Marker
           coordinate={{
@@ -26,7 +27,9 @@ export default function HomeScreen({ navigation }) {
             longitudeDelta: 0.0421,
           }}
         />
+        {/* <Marker coordinate={location} /> */}
       </MapView>
+      <Button title="Add loo" onPress={() => navigation.navigate("Add loo")} />
       <Button
         title="Add a Potty!"
         onPress={() => navigation.navigate("Add a Potty!")}
@@ -61,12 +64,3 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 });
-
-// style={styles.mapStyle}
-// provider={PROVIDER_GOOGLE}
-// initialRegion={{
-//   latitude: 45.5173,
-//   longitude: -122.6836,
-//   latitudeDelta: 0.0922,
-//   longitudeDelta: 0.0421,
-// }}

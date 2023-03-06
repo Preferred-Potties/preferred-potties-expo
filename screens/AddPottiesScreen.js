@@ -4,6 +4,7 @@ import { SelectList } from "react-native-dropdown-select-list";
 import { postReview } from "../services/loosServices.js";
 import * as Location from "expo-location";
 import { Marker } from "react-native-maps";
+import makeMarker from "../components/Marker.js";
 
 export default function AddPottiesScreen() {
   const [location, setLocation] = useState(null);

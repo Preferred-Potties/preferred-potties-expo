@@ -17,7 +17,6 @@ export default function SignUpScreen({ navigation }) {
       console.error(e);
     }
   };
-
   return (
     <View>
       <TextInput

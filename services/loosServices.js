@@ -1,26 +1,30 @@
 const BASE_URL = "http://localhost:7890";
 
 export async function postLoo(location, description, rating, review_id) {
-  const res = await fetch(`${BASE_URL}/api/v1/loos`, {
-    method: "POST",
-    mode: "cors",
-    credentials: "include",
-    headers: {
-      "Content-type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      location,
-      description,
-      rating,
-      review_id,
-    }),
-  });
-  const data = res.json();
-  if (!res.ok) {
-    throw new Error(data.message);
-  } else {
-    return data;
+  try {
+    const res = await fetch(`${BASE_URL}/api/v1/loos`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        location,
+        description,
+        rating,
+        review_id,
+      }),
+    });
+    const data = res.json();
+    if (!res.ok) {
+      throw new Error(data.message);
+    } else {
+      return data;
+    }
+  } catch (e) {
+    return null;
   }
 }
 
